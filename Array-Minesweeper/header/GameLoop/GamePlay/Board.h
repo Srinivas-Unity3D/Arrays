@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "Cell.h"
 
 
 namespace Gameplay 
@@ -8,6 +9,8 @@ namespace Gameplay
 	class Board 
 	{
 	private:
+
+		Cell* cell;
 
 		std::string boardTexturePath = "assets/textures/board.png";
 		sf::Texture boardTexture;
@@ -23,7 +26,7 @@ namespace Gameplay
 		float backgroundAlpha = 100.0f;
 
 
-
+		void creaeBoard();
 		void initialize();
 		void initializeBoardImage();
 		void initializeBacground();

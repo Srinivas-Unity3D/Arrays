@@ -6,13 +6,19 @@ namespace Gameplay
 	Board::Board() 
 	{
 		initialize();
+		creaeBoard();
 	}
 
-	void Board::initialize() 
+	void Board::initialize()
 	{
 		initializeBoardImage();
 
 		initializeBacground();
+	}
+
+	void Board::creaeBoard()
+	{
+		cell = new Cell(83, 83, sf::Vector2i(0, 0));
 	}
 
 	void Board::initializeBoardImage() 
@@ -44,5 +50,6 @@ namespace Gameplay
 	{
 		window.draw(backgroundSprite);
 		window.draw(boardSprite);
+		cell->render(window);
 	}
 }
