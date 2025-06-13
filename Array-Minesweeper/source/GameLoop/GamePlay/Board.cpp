@@ -11,6 +11,8 @@ namespace Gameplay
 	void Board::initialize() 
 	{
 		initializeBoardImage();
+
+		initializeBacground();
 	}
 
 	void Board::initializeBoardImage() 
@@ -26,8 +28,21 @@ namespace Gameplay
 		boardSprite.setScale(boardWidth / boardTexture.getSize().x, boardHeight / boardTexture.getSize().y);
 	}
 
+	void Board::initializeBacground() 
+	{
+		if (!backgroundTexure.loadFromFile(backgroundTexturePath)) 
+		{
+			std::cout << "Failed to Load Background Image" << std::endl;
+			return;
+		}
+
+		backgroundSprite.setTexture(backgroundTexure);
+		backgroundSprite.setColor(sf::Color( 255, 255, 255, backgroundAlpha));
+	}
+
 	void Board::render(sf::RenderWindow& window) 
 	{
+		window.draw(backgroundSprite);
 		window.draw(boardSprite);
 	}
 }
