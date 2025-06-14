@@ -27,4 +27,9 @@ namespace UIElements
 	{
 		game_window.draw(button_sprite);
 	}
+
+	void Button::setTextureRect(const sf::IntRect& rect)
+	{
+		button_sprite.setTextureRect(rect);
+	}
 }
