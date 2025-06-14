@@ -57,6 +57,6 @@ namespace Gameplay
 		 void setCellType(CellType celltype);
 
 		 void setCellTexture();
-		 sf::Vector2f getCellScreenPosition() const;
+		 sf::Vector2f getCellScreenPosition(float width, float height) const;
 	};
 }

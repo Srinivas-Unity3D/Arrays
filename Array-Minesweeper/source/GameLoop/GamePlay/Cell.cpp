@@ -10,9 +10,9 @@ namespace Gameplay
 	
 	void Cell::initialize(float width, float height, sf::Vector2i position)
 	{
-		this->position = position;
-		sf::Vector2f float_position(static_cast<float>(position.x), static_cast<float>(position.y));
-		sf::Vector2f cellScreenPosition = getCellScreenPosition();
+	//	this->position = position;
+	//	sf::Vector2f float_position(static_cast<float>(position.x), static_cast<float>(position.y));
+		sf::Vector2f cellScreenPosition = getCellScreenPosition(width, height);
 		button = new UIElements::Button(cell_texture_path, cellScreenPosition, width * slice_count, height);
 	}
 
@@ -62,7 +62,7 @@ namespace Gameplay
 		}
 	}
 
-	sf::Vector2f Cell::getCellScreenPosition() const
+	sf::Vector2f Cell::getCellScreenPosition(float width, float height) const
 	{
 		float xScreenPosition = cell_left_offset;
 		float yScreenPosition = cell_top_offset;
