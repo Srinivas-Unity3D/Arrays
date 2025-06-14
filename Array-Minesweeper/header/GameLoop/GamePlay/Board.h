@@ -25,6 +25,14 @@ namespace Gameplay
 		sf::Sprite backgroundSprite;
 		float backgroundAlpha = 100.0f;
 
+		static const int numberOfRows = 9;
+		static const int numberOfColumns = 9;
+
+		const float horizontalCellPadding = 115.0f;
+		const float verticalCellPadding = 329.0f;
+
+		float getCellWidthInBoard() const;
+		float getCellHeightInBoard() const;
 
 		void creaeBoard();
 		void initialize();
