@@ -12,7 +12,8 @@ namespace Gameplay
 	{
 		this->position = position;
 		sf::Vector2f float_position(static_cast<float>(position.x), static_cast<float>(position.y));
-		button = new UIElements::Button(cell_texture_path, float_position, width * slice_count, height);
+		sf::Vector2f cellScreenPosition = getCellScreenPosition();
+		button = new UIElements::Button(cell_texture_path, cellScreenPosition, width * slice_count, height);
 	}
 
 	void Cell::render(sf::RenderWindow& game_window)
@@ -59,6 +60,13 @@ namespace Gameplay
 		default:
 			break;
 		}
+	}
+
+	sf::Vector2f Cell::getCellScreenPosition() const
+	{
+		float xScreenPosition = cell_left_offset;
+		float yScreenPosition = cell_top_offset;
+		return sf::Vector2f(xScreenPosition, yScreenPosition);
 	}
 
 }
