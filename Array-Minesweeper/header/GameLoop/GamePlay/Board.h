@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Cell.h"
+#include <random>
 
 
 namespace Gameplay 
@@ -40,6 +41,15 @@ namespace Gameplay
 		void initialize();
 		void initializeBoardImage();
 		void initializeBacground();
+
+		std::default_random_engine randomEngine;
+		std::random_device randomDevice;
+
+		static const int totalMines = 9;
+
+		void populateMines();
+		void populateBoard();
+		void initializeVariables();
 	public:
 		Board();
 		void render(sf::RenderWindow& window);

@@ -13,6 +13,7 @@ namespace Gameplay
 		this->position = position;
 		sf::Vector2f cellScreenPosition = getCellScreenPosition(width, height);
 		button = new UIElements::Button(cell_texture_path, cellScreenPosition, width * slice_count, height);
+		current_cell_state = CellState::OPEN;
 	}
 
 	void Cell::render(sf::RenderWindow& game_window)

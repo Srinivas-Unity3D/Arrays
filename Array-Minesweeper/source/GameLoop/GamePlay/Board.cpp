@@ -3,10 +3,9 @@
 
 namespace Gameplay 
 {
-	Board::Board() 
+	Board::Board()
 	{
 		initialize();
-		creaeBoard();
 	}
 
 	void Board::initialize()
@@ -14,6 +13,39 @@ namespace Gameplay
 		initializeBoardImage();
 
 		initializeBacground();
+		initializeVariables();
+
+		creaeBoard();
+
+		populateBoard();
+	}
+
+	void Board::initializeVariables()
+	{
+		randomEngine.seed(randomDevice());
+	}
+
+	void Board::populateMines()
+	{
+		std::uniform_int_distribution<int> x_dist(0, numberOfRows - 1);
+		std::uniform_int_distribution<int> y_dist(0, numberOfColumns - 1);
+		int placedMines = 0;
+
+		while (placedMines < totalMines)
+		{
+			int x = x_dist(randomEngine);
+			int y = y_dist(randomEngine);
+
+			if (cells[x][y]->getCellType() != CellType::MINE) 
+			{
+				cells[x][y]->setCellType(CellType::MINE);
+				placedMines++;
+			}
+		}
+	}
+	void Board::populateBoard()
+	{
+		populateMines();
 	}
 
 	float Board::getCellWidthInBoard() const
