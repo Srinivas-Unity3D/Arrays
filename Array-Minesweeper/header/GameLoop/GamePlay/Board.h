@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Cell.h"
+#include <random>
 
 
 namespace Gameplay 
@@ -25,11 +26,36 @@ namespace Gameplay
 		sf::Sprite backgroundSprite;
 		float backgroundAlpha = 100.0f;
 
+		static const int numberOfRows = 9;
+		static const int numberOfColumns =9;
+
+		const float horizontalCellPadding = 100.0f;
+		const float verticalCellPadding = 329.0f;
+
+		Cell* cells[numberOfRows][numberOfColumns];
+
+		float getCellWidthInBoard() const;
+		float getCellHeightInBoard() const;
 
 		void creaeBoard();
 		void initialize();
 		void initializeBoardImage();
 		void initializeBacground();
+
+		std::default_random_engine randomEngine;
+		std::random_device randomDevice;
+
+		static const int totalMines = 9;
+
+		void populateMines();
+		void populateBoard();
+		void initializeVariables();
+
+		
+		
+		int countMinesAround(sf::Vector2i cell_position);
+		void populateCells();
+		bool isValidCellPosition(sf::Vector2i cell_position);
 	public:
 		Board();
 		void render(sf::RenderWindow& window);
