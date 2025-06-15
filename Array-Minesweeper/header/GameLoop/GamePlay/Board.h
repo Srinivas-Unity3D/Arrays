@@ -26,10 +26,12 @@ namespace Gameplay
 		float backgroundAlpha = 100.0f;
 
 		static const int numberOfRows = 9;
-		static const int numberOfColumns = 9;
+		static const int numberOfColumns =9;
 
-		const float horizontalCellPadding = 115.0f;
-		const float verticalCellPadding = 329.0f;
+		const float horizontalCellPadding = 100.0f;
+		const float verticalCellPadding = 450.0f;
+
+		Cell* board[numberOfColumns];
 
 		float getCellWidthInBoard() const;
 		float getCellHeightInBoard() const;
