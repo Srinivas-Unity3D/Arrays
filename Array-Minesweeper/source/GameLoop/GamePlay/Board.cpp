@@ -16,9 +16,28 @@ namespace Gameplay
 		initializeBacground();
 	}
 
+	float Board::getCellWidthInBoard() const
+	{
+		return (boardWidth - horizontalCellPadding)/numberOfColumns;
+	}
+
+	float Board::getCellHeightInBoard() const
+	{
+		return (boardHeight-verticalCellPadding)/numberOfRows;
+	}
+
 	void Board::creaeBoard()
 	{
-		cell = new Cell(83, 83, sf::Vector2i(0, 0));
+		float cellWidth = getCellWidthInBoard();
+		float cellHeight = getCellHeightInBoard();
+
+		for (int row = 0; row < numberOfRows; ++row) 
+		{
+			for (int col = 0; col < numberOfColumns; ++col) 
+			{
+				cells[row][col] = new Cell(cellWidth, cellHeight, sf::Vector2i(row, col));
+			}
+		}
 	}
 
 	void Board::initializeBoardImage() 
@@ -50,6 +69,12 @@ namespace Gameplay
 	{
 		window.draw(backgroundSprite);
 		window.draw(boardSprite);
-		cell->render(window);
+		for (int row = 0; row < numberOfRows; row++)
+		{
+			for (int col = 0; col < numberOfColumns; col++) 
+			{
+				cells[row][col]->render(window);
+			}
+		}
 	}
 }
